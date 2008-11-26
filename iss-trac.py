@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import criteria 
 import itertools, ephem, sys, time, tracker
 from utils import rad2deg, localtime
