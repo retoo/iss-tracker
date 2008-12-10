@@ -1,5 +1,7 @@
 import time, ephem, utils
 
+from utils import rad2deg
+
 from data import reto, iss
 
 sat = iss
@@ -10,6 +12,6 @@ while True:
     sat.compute(obs)
     
     print "Az: %f Alt: %f, Range: %i km, %s" % \
-        (utils.displa_coord(sat.sublat, sat.sublong)
-    break
-    time.sleep(1.0 / 20)
+        (rad2deg(sat.az), rad2deg(sat.alt), int(sat.range / 1000), utils.displa_coord(sat.sublat, sat.sublong))
+
+    time.sleep(1.0)
