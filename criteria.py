@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3.0
+
 import unittest
 
 class Score(object):

@@ -1,9 +1,9 @@
-#!/usr/bin/python
+#!/usr/local/bin/python3.0
 
 import criteria 
 import itertools, ephem, sys, time, tracker
 from utils import rad2deg, localtime
-
+from data import reto, iss
         
 def calc_alt_func(obj, observer):
     def calculator(date):
@@ -38,7 +38,7 @@ def risings(observer, obj, start_date = ephem.now(), end_date = None):
 
         if obj.alt < 0:
             break
-        print date, "wait for the sat to set", obj.alt 
+        print(date, "wait for the sat to set", obj.alt) 
     
     prev = None
     risen = False
@@ -123,7 +123,8 @@ class Pass(object):
         return 
 
 if __name__ == '__main__':
-    from data import reto, iss
+
+
     sun = ephem.Sun()
     
     observer = reto
@@ -135,6 +136,6 @@ if __name__ == '__main__':
         if p.score > 70:
             start = localtime(p.start)
             end = localtime(p.end)
-            print "%s - %s: sh=%i alt=%i sun=%i score=%i%%" % \
+            print("%s - %s: sh=%i alt=%i sun=%i score=%i%%" % \
                 (start.strftime("%Y-%m-%d %H:%M:%S"), end.strftime("%H:%M:%S"), \
-                p.shadow_ratio, rad2deg(p.max_alt), rad2deg(p.max_sun_alt), p.score)
+                p.shadow_ratio, rad2deg(p.max_alt), rad2deg(p.max_sun_alt), p.score))

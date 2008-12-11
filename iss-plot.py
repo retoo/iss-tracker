@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3.0
+
 import time, ephem, utils, tracker
 
 from utils import rad2deg

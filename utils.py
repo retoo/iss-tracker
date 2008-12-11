@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3.0
 # -*- coding: utf-8 -*-
 
 import itertools
@@ -44,11 +44,11 @@ def displa_coord(lat, long):
 if __name__ == "__main__":
     class ChunkTest(unittest.TestCase):
         def testNormal(self):
-            g = chunk(xrange(0, 7), 3, 0)
+            g = chunk(range(0, 7), 3, 0)
             i = iter(g)
-            self.assertEquals(i.next(), [0, 1, 2])
-            self.assertEquals(i.next(), [3, 4, 5])
-            self.assertEquals(i.next(), [6, 0, 0])
+            self.assertEquals(next(i), [0, 1, 2])
+            self.assertEquals(next(i), [3, 4, 5])
+            self.assertEquals(next(i), [6, 0, 0])
 
 
     unittest.main()
