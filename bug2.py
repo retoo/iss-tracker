@@ -11,10 +11,10 @@ def format(str):
     
     return str
 
-def displa_coord(lat, int):
+def displa_coord(lat, long):
     x  = format(str(lat) + ": N" if lat >= 0 else str(-lat) + ": S")
     x += ", " 
-    x += format(str(int) + ": E" if int >= 0 else str(-int) + ": W")
+    x += format(str(long) + ": E" if long >= 0 else str(-long) + ": W")
     return x
 
 def rad2deg(rad):
@@ -23,7 +23,7 @@ def rad2deg(rad):
 
 line1 = 'ISS (ZARYA)'
 line2 = '1 25544U 98067A   08334.54218750  .00025860  00000-0  20055-3 0  7556'
-line3 = '2 25544 051.6425 248.8374 0006898 046.3246 303.9711 15.71618375574540594%'
+line3 = '2 25544 051.6425 248.8374 0006898 046.3246 303.9711 15.71618375574540594'
 
 iss = ephem.readtle(line1, line2, line3)
 
@@ -36,15 +36,13 @@ reto.elevation = 350
 obs = reto
 sat = iss
 
-while True:
-    obs.date = ephem.now()
-    sat.compute(obs)
-    
-    print("Az: %f Alt: %f (%f, %f), Range: %i km, %s (%f, %f)" % \
-        (rad2deg(sat.az), rad2deg(sat.alt), 
-        sat.az, sat.alt, 
-        int(sat.range / 1000), 
-        displa_coord(sat.sublat, sat.sublong),
-        sat.sublat, sat.sublong))
+obs.date = "2008.12.12 13:13:13"
+sat.compute(obs)
 
-    time.sleep(1.0)
+print("Az: %f Alt: %f (%f, %f), Range: %i km, %s (%f, %f)" % \
+    (rad2deg(sat.az), rad2deg(sat.alt), 
+    sat.az, sat.alt, 
+    int(sat.range / 1000), 
+    displa_coord(sat.sublat, sat.sublong),
+    sat.sublat, sat.sublong))
+
