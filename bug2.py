@@ -36,7 +36,7 @@ reto.elevation = 350
 obs = reto
 sat = iss
 
-obs.date = "2008.12.12 13:13:13"
+obs.date = "2008/12/12 13:13:13"
 sat.compute(obs)
 
 print("Az: %f Alt: %f (%f, %f), Range: %i km, %s (%f, %f)" % \
@@ -45,4 +45,8 @@ print("Az: %f Alt: %f (%f, %f), Range: %i km, %s (%f, %f)" % \
     int(sat.range / 1000), 
     displa_coord(sat.sublat, sat.sublong),
     sat.sublat, sat.sublong))
+
+print("date", obs.date, "epoch", obs.epoch, "lat", obs.lat, "long",
+      obs.long, "elevation", obs.elevation, "temp", obs.temp, "pressure",
+      obs.pressure)
 
