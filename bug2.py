@@ -2,6 +2,7 @@
 
 import time
 import ephem
+import sys
 
 def format(str):
 
@@ -50,3 +51,13 @@ print("date", obs.date, "epoch", obs.epoch, "lat", obs.lat, "long",
       obs.long, "elevation", obs.elevation, "temp", obs.temp, "pressure",
       obs.pressure)
 
+sys.exit()
+skip = ['rise_time', 'rise_az', 'transit_time', 'transit_alt', 'set_time', 'set_az', 'circumpolar', 'neverup']
+for attr in dir(iss):
+    if attr in skip:
+        continue
+
+    value = getattr(iss, attr)
+    
+    if not hasattr(value, '__call__'):
+        print(attr, value)
